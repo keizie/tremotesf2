@@ -772,6 +772,7 @@ namespace tremotesf {
     }
 
     void Torrent::setPeersEnabled(bool enabled) {
+        return;
         if (enabled != mPeersEnabled) {
             mPeersEnabled = enabled;
             if (mPeersEnabled) {
