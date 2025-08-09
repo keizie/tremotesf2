@@ -54,12 +54,9 @@ namespace tremotesf {
 
         directories.removeDuplicates();
 
-        QCollator collator{};
-        collator.setCaseSensitivity(Qt::CaseInsensitive);
-        collator.setNumericMode(true);
         // QStringList is not compatibly with std::ranges::sort in Qt 5
-        std::sort(directories.begin(), directories.end(), [&collator](const auto& first, const auto& second) {
-            return collator.compare(first, second) < 0;
+        std::sort(directories.begin(), directories.end(), [](const QString& first, const QString& second) {
+            return QString::compare(first, second, Qt::CaseInsensitive) < 0;
         });
 
         auto ret = directories
